@@ -26,4 +26,23 @@ class AddressController extends Controller
         }
         return 'Parâmetro de pesquisa inválido';
     }
+
+    public function insert(Request $req){
+
+        $a = $req->only(['address']);
+
+        if($a['address']){
+            $newAddress = [
+                'address' => $req->address,
+            ];
+
+            $address = new Address($newAddress);
+            $address->save();
+
+            return $newAddress;
+        }
+        return "Dados incompletos";
+    }
+
+
 }

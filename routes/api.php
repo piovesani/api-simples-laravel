@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{id}', [UserController::class, 'findOne']);
+Route::post('/users', [UserController::class, 'insert']);
 
 Route::get('/adresses', [AddressController::class, 'index']);
 Route::get('/adresses/{id}', [AddressController::class, 'findOne']);
+Route::post('/adresses', [AddressController::class, 'insert']);
+
+
+//Route::get('/users/update', [PostController::class, 'update']);
+//Route::get('/users/delete/', [PostController::class, 'delete']);
