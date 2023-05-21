@@ -20,7 +20,7 @@ class UserController extends Controller
         if(is_int($id)){
             $user = User::find($id);
             if($user){
-                return $user;
+                return $user->address;
             }
             return 'Usuário não existe';
         }
@@ -41,7 +41,7 @@ class UserController extends Controller
             $newUser = [
                 'name' => $req->name,
                 'email' => $req->email,
-                'password' => $req->password,
+                'password' => $req->password
             ];
 
             $user = new User($newUser);
