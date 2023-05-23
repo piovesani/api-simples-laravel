@@ -14,6 +14,7 @@ class InvoiceController extends Controller
     }
 
     public function createInvoice(Request $req){
+
         $data = $req->only([
             'description', 'value', 'address_id', 'user_id'
         ]);
@@ -26,5 +27,21 @@ class InvoiceController extends Controller
         }
         return "Dados incompletos";
 
+    }
+
+    public function findOne(Request $req){
+
+        $id = intval($req->id);
+
+        if(is_int($id)){
+            $invoice = Invoice::find($id);
+            if($invoice){
+                $invoice['address'] = $invoice->address;
+                $invoice['user'] = $invoice->user;
+                return $invoice;
+            }
+            return 'Invoice não cadastrado';
+        }
+        return 'Parâmetro de pesquisa inválido';
     }
 }

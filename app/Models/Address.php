@@ -13,5 +13,13 @@ class Address extends Model
         'address',
     ];
 
+    protected $hidden = [
+        'user_id',
+    ];
+
     use HasFactory;
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

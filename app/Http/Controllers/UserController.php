@@ -20,7 +20,8 @@ class UserController extends Controller
         if(is_int($id)){
             $user = User::find($id);
             if($user){
-                return $user->address;
+                $user['address'] = $user->adresses;
+                return $user;
             }
             return 'Usuário não existe';
         }

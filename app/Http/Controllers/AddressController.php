@@ -20,6 +20,7 @@ class AddressController extends Controller
         if(is_int($id)){
             $address = Address::find($id);
             if($address){
+                $address['user'] = $address->user;
                 return $address;
             }
             return 'Endereço não cadastrado';
